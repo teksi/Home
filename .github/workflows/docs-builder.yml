@@ -22,14 +22,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  datamodel-documentation:
-    # Skip generating datamodel docs on PRs labeled PR-fast-doc
-    if: ${{ !(github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'PR-fast-doc')) }}
-    uses: ./.github/workflows/datamodel-create-dumps.yml
-
   build:
-    needs: datamodel-documentation
-    if: always() # Always run to build docs even if datamodel step is skipped
     runs-on: ubuntu-24.04
 
     steps:
