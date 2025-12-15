@@ -1,0 +1,26 @@
+[main]
+host = https://app.transifex.com
+
+[o:teksi:p:home-docs:r:index]
+source_file = i18n/pot/index.pot
+source_lang = en
+file_filter = i18n/<lang>/index.po
+type = PO
+
+[o:teksi:p:home-docs:r:modules-guide]
+source_file = i18n/pot/modules-guide.pot
+source_lang = en
+file_filter = i18n/<lang>/modules-guide.po
+type = PO
+
+[o:teksi:p:home-docs:r:provider-guide]
+source_file = i18n/pot/provider-guide.pot
+source_lang = en
+file_filter = i18n/<lang>/provider-guide.po
+type = PO
+
+[o:teksi:p:home-docs:r:translation]
+source_file = i18n/pot/translation.pot
+source_lang = en
+file_filter = i18n/<lang>/translation.po
+type = PO
