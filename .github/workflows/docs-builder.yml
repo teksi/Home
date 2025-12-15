@@ -1,0 +1,87 @@
+name: 📚 Documentation builder
+
+concurrency:
+  group: docs-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/**
+      - '.github/workflows/docs-builder.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - docs/**
+      - '.github/workflows/docs-builder.yml'
+  schedule:
+    - cron: "30 04 * * *"
+  workflow_dispatch:
+
+jobs:
+  datamodel-documentation:
+    # Skip generating datamodel docs on PRs labeled PR-fast-doc
+    if: ${{ !(github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'PR-fast-doc')) }}
+    uses: ./.github/workflows/datamodel-create-dumps.yml
+
+  build:
+    needs: datamodel-documentation
+    if: always() # Always run to build docs even if datamodel step is skipped
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: install requirements
+        working-directory: docs
+        run: pip install -r requirements.txt
+
+      - name: install tx requirements
+        if: ${{ !(github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'PR-fast-doc')) }}
+        working-directory: docs
+        run: |
+          pip install -r requirements-tx.txt
+          sudo apt-get install -y gettext
+          curl -OL https://github.com/transifex/cli/releases/download/v1.6.10/tx-linux-amd64.tar.gz
+          tar -xvzf tx-linux-amd64.tar.gz
+          make gettext
+
+      - name: Prepare datamodel static folder
+        run: mkdir -p docs/_static/datamodel
+
+      - name: tx pull
+        if: ${{ ( github.event.pull_request.head.repo.full_name == 'teksi/home' || github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'schedule') && !(github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'PR-fast-doc')) }}
+        env:
+          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+        working-directory: docs
+        run: make transifex_pull
+
+      - name: tx push
+        env:
+          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        working-directory: docs
+        run: make transifex_sync
+
+      - name: build documentation
+        working-directory: docs
+        run: |
+          make html
+          touch build/html/.nojekyll
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: documentation
+          path: docs/build/html
+          if-no-files-found: error
+
+      - name: Deploy 🚀
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'schedule' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: docs/build/html

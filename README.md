@@ -1,4 +1,4 @@
-![TEKSI](https://github.com/teksi/Home/blob/master/Ressources/Logos/210910-teksi-logos-en-01_45pp.png?raw=true)
+![TEKSI](https://github.com/teksi/Home/blob/main/Ressources/Logos/210910-teksi-logos-en-01_45pp.png?raw=true)
 
 # Home
 TEKSI association for open source management of public infrastructures

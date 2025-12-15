@@ -1,0 +1,11 @@
+.env
+
+venv
+.vscode
+.python-version
+
+*.orig
+.idea
+.pycache
+__pycache__
+.DS_Store
