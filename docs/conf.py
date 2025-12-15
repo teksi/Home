@@ -42,7 +42,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "TEKSI"
+project = "home"
 copyright = "2025, TEKSI www.teksi.ch"
 
 # The version info for the project you're documenting, acts as replacement for
