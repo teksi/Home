@@ -1,3 +1,5 @@
+.. _district_heating:
+
 District Heating
 =====================
 

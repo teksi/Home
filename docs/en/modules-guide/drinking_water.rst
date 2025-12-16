@@ -1,3 +1,5 @@
+.. _drinking_water:
+
 Drinking Water
 =====================
 
