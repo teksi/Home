@@ -1,7 +1,8 @@
-TEKSI documentation
+TEKSI technical documentation
 ============================================
 
-TEKSI documentation
+The hereby TEKSI technical documentation is intended to help system
+administrators and advanced users to install, configure and maintain TEKSI Modules.
 
 ..
     Commented out pdf for the moment - needs new code
