@@ -1,7 +1,7 @@
 Modules
 ===========
 
-Available modules
+Here are the different TEKSI Modules currently available:
 
 .. toctree::
    :maxdepth: 3
