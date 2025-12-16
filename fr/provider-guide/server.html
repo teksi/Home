@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setup database server &mdash; Documentation home dev</title>
+  <title>Setup database server &mdash; Documentation HOME dev</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -33,7 +33,7 @@
           
           
           <a href="../index.html" class="icon icon-home">
-            home
+            HOME
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -65,7 +65,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">home</a>
+          <a href="../index.html">HOME</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -87,7 +87,7 @@
   <blockquote>
 <div></div></blockquote>
 <section id="setup-database-server">
-<h1>Setup database server<a class="headerlink" href="#setup-database-server" title="Lien vers cette rubrique"></a></h1>
+<span id="server"></span><h1>Setup database server<a class="headerlink" href="#setup-database-server" title="Lien vers cette rubrique"></a></h1>
 <p>If you expect to access the data from several different workstations, you can
 install the database on a network accessible server. If it is just a single
 desktop you are working on, this can be installed on the same machine.</p>
@@ -113,7 +113,10 @@ desktop you are working on, this can be installed on the same machine.</p>
 </ul>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Check the <a class="reference external" href="https://github.com/teksi/Home/wiki/TEKSI-modules-releases-and-roadmap#teksi-modules-releases">TEKSI Roadmap</a> to see latest minimal requirements</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following instructions are <strong>optional</strong>:</p>
@@ -126,8 +129,8 @@ with no database password at all.</p>
 <a class="reference external" href="http://www.postgresql.org/docs/devel/static/auth-pg-hba-conf.html">pg_hba.conf</a>
 and set the auth-options from <code class="docutils literal notranslate"><span class="pre">md5</span></code> to <code class="docutils literal notranslate"><span class="pre">trust</span></code>. A database service reload
 is required to activate changes.</p>
-</div>
 <p>To optimise RAM size etc. of your machine postgreSQL is running on you can use <a class="reference external" href="http://www.pgtune.leopard.in.ua/#/">pgtune</a>. Adapt your postgresql.conf file.</p>
+</div>
 </section>
 </section>
 </section>

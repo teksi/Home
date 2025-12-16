@@ -14,8 +14,9 @@ If you need support installing a TEKSI Module, contact one of our `certified ser
    :maxdepth: 3
 
    requirements
-   installation
-   upgrade
-   configuration
-   customization
    server
+
+   .. installation
+   .. upgrade
+   .. configuration
+   .. customization
